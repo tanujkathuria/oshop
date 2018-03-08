@@ -1,0 +1,40 @@
+<h1>Shopping Cart</h1>
+<p>You have {{shoppingCartQty}} items in your shopping cart</p>
+<table  *ngIf="items.length" class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th>Product</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let item of items">
+        <th scope="row"><img class="rounded-circle" width="100px" height="100px" src ={{item.product.imageURL}}></th>
+        <td>{{item?.product.title}}</td>
+        <td>{{item?.product.category}}</td>
+        <td>{{item?.product.price * item?.quantity | currency:'INR':true}}</td>
+        <td class="row no-gutters">
+            <div class="col-2">
+                <button (click)="removeFromCart(item.product)" class="btn btn-secondary btn-block">-</button>
+            </div>
+            <div class="col" align="center">
+                    {{item?.quantity}}
+                </div>
+             <div class="col-2">
+                        <button (click)="addToCart(item.product)" class="btn btn-secondary btn-block">+</button>
+             </div>  
+        </td>
+      </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>{{totalPrice | currency:'INR':true}}</th>
+      <th *ngIf="items.length"><a routerLink="/check-out" class="btn btn-dark btn-sm">Check Out</a></th>
+    </tr>
+    <tr  *ngIf="items.length"><button (click)="clearCart()" class="btn btn-danger btn-sm">Clear Shopping Cart</button></tr>
+    </tbody>
+  </table>

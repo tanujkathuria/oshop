@@ -1,0 +1,6 @@
+<button *ngIf="!spinBar"
+(click)="login()"
+class="btn btn-primary">Login with Google</button>
+
+
+<app-progress-spinner *ngIf="spinBar"></app-progress-spinner>

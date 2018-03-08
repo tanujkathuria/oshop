@@ -1,0 +1,79 @@
+ <!--Main layout-->
+ <div class="container">
+  <div class="row mt-lg-5">
+
+      <!--Product-->
+      <div class="col-sm-7 col-md-7 col-lg-7 wow fadeIn" data-wow-delay="0.2s">
+
+        <ngb-carousel>
+          <ng-template ngbSlide>
+              <img src="{{product.imageURL }}" alt="Random first slide">
+           
+          </ng-template>
+
+          <ng-template ngbSlide>
+              <img src="{{product.imageURL1 }}" alt="Random first slide">
+            
+          </ng-template>
+          <ng-template ngbSlide>
+              <img src="{{product.imageURL2 }}" alt="Random first slide">
+           
+          </ng-template>
+        </ngb-carousel>
+      </div>
+      <!--/.Product-->
+
+      <!--Info-->
+      <div class="col-sm-5 col-md-5 col-lg-5">
+
+          <!--First row-->
+          <div class="row wow fadeIn" data-wow-delay="0.4s">
+              <div class="col-md-12">
+                  <!--Product-->
+                  <div class="product-wrapper">
+
+                      <!--Product data-->
+                      <h2 class="h2-responsive mt-4 font-bold" >{{product.title}}</h2>
+                      <hr>
+
+                      <h2>
+                          <span class="badge blue">{{product.price|currency:'INR':true}}</span>
+                      </h2>
+                      <dl class="row mt-4">
+                          <dt class="col-sm-3">Category</dt>
+                          <dd class="col-sm-9">{{product.category}}</dd>
+
+                          <dt class="col-sm-3">Decription</dt>
+                          <dd class="col-sm-9">Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                          <dd class="col-sm-9 offset-sm-3">Donec id elit non mi porta gravida at eget metus.</dd>
+
+                          <dt class="col-sm-3">Quantity</dt>
+                          <dd class="col-sm-9">Per Kg</dd>
+
+                          <dt class="col-sm-3 text-truncate">Units</dt>
+                          <dd class="col-sm-9">cm/mm/kg/l/pc</dd>
+                      </dl>
+
+                      <hr>
+                      <button *ngIf="!getItemQuantity(product)" (click)="addToCart(product)" class="btn btn-danger btn-md" >Add to Cart </button>
+                                <div *ngIf="getItemQuantity(product)" class="row no-gutters">
+                                    <div class="col-2">
+                                        <button (click)="removeFromCart(product)" class="btn btn-secondary btn-block">-</button>
+                                    </div>
+                                    <div class="col">
+                                            <button class="btn btn-block">{{getItemQuantity(product)}} in cart</button>
+                                        </div>
+                                     <div class="col-2">
+                                                <button (click)="addToCart(product)" class="btn btn-secondary btn-block">+</button>
+                                     </div>
+                                    
+                                </div>
+                  </div>
+                  <!--Product-->
+
+              </div>
+          </div>
+          <!--/.First row-->
+
+      </div>
+      <!--/.Info-->

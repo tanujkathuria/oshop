@@ -1,0 +1,10 @@
+.card{
+    width:inherit
+}
+.card-body{
+    width:inherit
+}
+.table{
+    width:inherit;
+    max-width:inherit;
+}

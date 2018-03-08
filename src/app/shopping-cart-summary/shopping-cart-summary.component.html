@@ -1,0 +1,37 @@
+<div class="card row" >
+    <div class="card-body">
+        <h1>Order Summary</h1>
+        <p>You have {{shoppingCartQty}} items in your shopping cart</p>
+        <div class="table-responsive">
+        <table *ngIf="items.length" class="table" >
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Qty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let item of items">
+                <th scope="row"><img class="rounded-circle" width="50px" height="50px" src ={{item.product.imageURL}}></th>
+                <td>{{item?.product.title}}</td>
+                <td>{{item?.product.category}}</td>
+                <td>{{item?.product.price * item?.quantity | currency:'INR':true}}</td>
+                <td> {{item?.quantity}}
+                </td>
+              </tr>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th>{{totalPrice | currency:'INR':true}}</th>
+              <th></th>
+            </tr>
+            <tr></tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+<div  class="row">
+<div  class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+<form #f="ngForm" >
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input #name="ngModel" required [(ngModel)]="checkoutInformation.name" name="name" id="name" type="text" class="form-control" >
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">Please enter the name</div>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input #address="ngModel" required [(ngModel)]="checkoutInformation.address" name="address" id="address" type="textarea" class="form-control" >
+            <div class="alert alert-danger" *ngIf="address.touched && address.invalid">Please enter the address</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone No</label>
+                <input #phone="ngModel" required [(ngModel)]="checkoutInformation.phone" name="phone" id="phone" type="textarea" class="form-control" >
+                <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">Please enter the phone</div>
+            </div>
+            <div *ngIf="!paymenttoBeMade">
+              <button [disabled]="!f.valid" (click)="save(f.value)" class="btn btn-primary">Save Shipment Details</button> 
+            </div>
+            <div *ngIf="paymenttoBeMade">
+               <app-order-success [shoppingCartQty]="shoppingCartQty" [totalPrice]="multiplyMethod(totalPrice)"></app-order-success>
+            </div>
+            </form></div>
+            
+<div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+<shopping-cart-summary></shopping-cart-summary> 
+</div>
+</div>
+
